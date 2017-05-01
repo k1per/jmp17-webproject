@@ -23,3 +23,5 @@ databaseChangeLog:
                   type: varchar(255)
                   constraints:
                     nullable: false
+  - createSequence:
+      sequenceName: hibernate_sequence

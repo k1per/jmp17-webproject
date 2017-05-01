@@ -4,9 +4,9 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Jmp17WebprojectApplication {
+public class HealBroApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Jmp17WebprojectApplication.class, args);
+		SpringApplication.run(HealBroApplication.class, args);
 	}
 }
