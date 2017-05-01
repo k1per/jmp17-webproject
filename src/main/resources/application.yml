@@ -1,0 +1,20 @@
+liquibase:
+  change-log: classpath:/db/changelog/db.changelog-master.yml
+
+---
+spring:
+  profiles: dev
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+
+---
+spring:
+  profiles: prod
+
+spring:
+  jpa:
+    hibernate:
+      ddl-auto: update
