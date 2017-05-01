@@ -1,20 +1,17 @@
 liquibase:
   change-log: classpath:/db/changelog/db.changelog-master.yml
-
+server:
+  port: 9090
 ---
-spring:
-  profiles: dev
-
 spring:
   jpa:
     hibernate:
       ddl-auto: create-drop
-
+  profiles: dev
 ---
+
 spring:
   profiles: prod
-
-spring:
   jpa:
     hibernate:
       ddl-auto: update

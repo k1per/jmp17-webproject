@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 
 /**
  * Created by Anton_Korenev on 5/1/2017.
@@ -14,6 +16,8 @@ import javax.persistence.Entity;
 @AllArgsConstructor
 @NoArgsConstructor
 public class Patient {
+    @Id
+    @GeneratedValue
     private Long id;
     private String firstName;
     private String lastName;
