@@ -1,0 +1,103 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>HealBro inc.</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <link rel="stylesheet" type="text/css"
+          href="../webjars/bootstrap/3.3.7/css/bootstrap.min.css"/>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse" th:fragment="header">
+    <div class="container">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">HealBro inc.</a>
+        </div>
+        <div id="navbar" class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li>
+                    <a th:href="@{/}">
+                        <span th:text="#{menu.main}"></span>
+                    </a>
+                </li>
+                <li class="active">
+                    <a th:href="@{/registrationPage}">
+                        <span th:text="#{menu.registration}"></span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="starter-template">
+        <h1><span th:text="#{registration.message}"></span></h1>
+    </div>
+    <div class="starter-template">
+        <form action="#" th:action="@{/register/patient}" th:object="${patientDTO}" method="post">
+            <table>
+                <tr>
+                    <td><label th:text="#{login.message}" ></label></td>
+                    <td><input type="text" th:field="*{login}" /></td>
+                    <td th:if="${#fields.hasErrors('login')}" th:errors="*{login}"></td>
+                </tr>
+                <tr>
+                    <td><label th:text="#{password.message}" ></label></td>
+                    <td><input type="password" th:field="*{password}" /></td>
+                    <td th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></td>
+                </tr>
+                <tr>
+                    <td><label th:text="#{password.confirm.message}" ></label></td>
+                    <td><input type="password" th:field="*{confirmPassword}" /></td>
+                    <td th:if="${#fields.hasErrors('confirmPassword')}" th:errors="*{confirmPassword}"></td>
+                </tr>
+                <tr>
+                    <td><label th:text="#{firstName.message}" ></label></td>
+                    <td><input type="text" th:field="*{firstName}" /></td>
+                    <td th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></td>
+                </tr>
+                <tr>
+                    <td><label th:text="#{lastName.message}" ></label></td>
+                    <td><input type="text" th:field="*{lastName}" /></td>
+                    <td th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></td>
+                </tr>
+                <tr>
+                    <td><label th:text="#{age.message}" ></label></td>
+                    <td><input type="number" th:field="*{age}" /></td>
+                    <td th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></td>
+                </tr>
+                <tr>
+                    <td><label th:text="#{email.message}" ></label></td>
+                    <td><input type="email" th:field="*{email}" /></td>
+                    <td th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></td>
+                </tr>
+                <tr>
+                    <td><label th:text="#{telephone.message}" ></label></td>
+                    <td><input type="number" th:field="*{contactTelephoneNumber}"/></td>
+                    <td th:if="${#fields.hasErrors('contactTelephoneNumber')}" th:errors="*{contactTelephoneNumber}"></td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Submit" /></td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+<!-- /.container -->
+
+<script type="text/javascript"
+        src="../webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js">
+</script>
+<script type="text/javascript">
+    $(document).ready(function() {
+        $("#locales").change(function () {
+            var selectedOption = $('#locales').val();
+            if (selectedOption != ''){
+                window.location.replace('?lang=' + selectedOption);
+            }
+        });
+    });
+</script>
+</body>
+</html>

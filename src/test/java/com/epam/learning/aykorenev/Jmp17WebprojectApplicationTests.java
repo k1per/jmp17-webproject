@@ -12,5 +12,4 @@ public class Jmp17WebprojectApplicationTests {
 	@Test
 	public void contextLoads() {
 	}
-
 }
