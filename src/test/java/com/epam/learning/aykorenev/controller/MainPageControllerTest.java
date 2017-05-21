@@ -14,7 +14,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * Created by Anton_Korenev on 5/9/2017.
  */
 @RunWith(SpringRunner.class)
-@WebMvcTest(MainPageController.class)
+@WebMvcTest(value = MainPageController.class, secure = false)
 public class MainPageControllerTest {
 
     @Autowired
@@ -23,6 +23,6 @@ public class MainPageControllerTest {
     @Test
     public void shouldReturnHomeView() throws Exception {
         mockMvc.perform(get("/")).
-                andExpect(view().name("home"));
+                andExpect(view().name("index"));
     }
 }

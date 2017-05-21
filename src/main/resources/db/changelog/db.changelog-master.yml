@@ -25,3 +25,60 @@ databaseChangeLog:
                     nullable: false
   - createSequence:
       sequenceName: hibernate_sequence
+  - changeSet:
+      id: 2
+      author: anton_korenev
+      changes:
+      - renameTable:
+          newTableName: patients
+          oldTableName: Patient
+          schemaName: public
+  - changeSet:
+      id: 3
+      author: anton_korenev
+      changes:
+      - createTable:
+            columns:
+            - column:
+                name: id
+                type: bigint
+                autoIncrement: true
+                constraints:
+                  primaryKey: true
+                  nullable: false
+            - column:
+                name: login
+                type: varchar(255)
+                constraints:
+                  nullable: false
+            - column:
+                name: password
+                type: varchar(255)
+                constraints:
+                  nullable: false
+            - column:
+                name: enabled
+                type: tinyint(1)
+                constraints:
+                  nullable: false
+            - column:
+                name: role
+                type: varchar(255)
+                constraints:
+                  nullable: false
+            remarks: Table for login and password credentials
+            schemaName: public
+            tableName: security_data
+      - addColumn:
+            columns:
+            - column:
+                name: age
+                type: int
+            - column:
+                name: contact_telephone_number
+                type: varchar(255)
+            - column:
+                name: email
+                type: varchar(255)
+            schemaName: public
+            tableName: patients

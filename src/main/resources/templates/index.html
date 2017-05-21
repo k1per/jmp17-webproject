@@ -1,10 +1,11 @@
 <!DOCTYPE HTML>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head>
     <title>HealBro inc.</title>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <link rel="stylesheet" type="text/css"
-          href="../webjars/bootstrap/3.3.7/css/bootstrap.min.css"/>
+          href="webjars/bootstrap/3.3.7/css/bootstrap.min.css"/>
 </head>
 <body>
 <nav class="navbar navbar-inverse" th:fragment="header">
@@ -22,6 +23,21 @@
                 <li>
                     <a th:href="@{/registrationPage}">
                         <span th:text="#{menu.registration}"></span>
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/user}">
+                        <span th:text="#{menu.profile}"></span>
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/login}">
+                        <span th:text="#{menu.login}"></span>
+                    </a>
+                </li>
+                <li>
+                    <a th:href="@{/logout}">
+                        <span th:text="#{menu.logout}"></span>
                     </a>
                 </li>
             </ul>

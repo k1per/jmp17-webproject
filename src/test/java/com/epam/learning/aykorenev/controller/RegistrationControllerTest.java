@@ -1,9 +1,11 @@
 package com.epam.learning.aykorenev.controller;
 
+import com.epam.learning.aykorenev.service.PatientService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
@@ -17,11 +19,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  * Created by Anton_Korenev on 5/9/2017.
  */
 @RunWith(SpringRunner.class)
-@WebMvcTest(RegistrationController.class)
+@WebMvcTest(value = RegistrationController.class, secure = false)
 public class RegistrationControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
+    @MockBean
+    private PatientService patientService;
 
     @Test
     public void shouldSuccessfullySubmitFormRegistrationData() throws Exception {
@@ -35,7 +39,7 @@ public class RegistrationControllerTest {
                        param("age","44").
                        param("contactTelephoneNumber","89993332211").
                        param("email","RedCrocodile2017@mail.zm")).
-               andExpect(redirectedUrl("/"));
+               andExpect(redirectedUrl("/login"));
     }
 
     @Test

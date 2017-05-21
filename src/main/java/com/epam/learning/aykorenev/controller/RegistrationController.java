@@ -1,8 +1,10 @@
 package com.epam.learning.aykorenev.controller;
 
 import com.epam.learning.aykorenev.model.dto.PatientDTO;
+import com.epam.learning.aykorenev.service.PatientService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -19,6 +21,12 @@ import javax.validation.Valid;
 public class RegistrationController {
 
     private static final Logger logger = LoggerFactory.getLogger(RegistrationController.class);
+    @Autowired
+    private PatientService patientService;
+
+    public RegistrationController(PatientService patientService) {
+        this.patientService = patientService;
+    }
 
     @PostMapping("/patient")
     public String registerPatient(@Valid @ModelAttribute("patientDTO") PatientDTO patientDTO,
@@ -31,7 +39,7 @@ public class RegistrationController {
             return "registration";
         }
         logger.info("Received patient to register {} ", patientDTO);
-        //TODO persist and redirect on login page
-        return "redirect:/";
+        patientService.createNewPatient(patientDTO);
+        return "redirect:/login";
     }
 }
