@@ -34,14 +34,9 @@
                             <span th:text="#{menu.profile}"></span>
                         </a>
                     </li>
-                    <li>
+                    <li sec:authorize="!isAuthenticated()">
                         <a th:href="@{/login}">
                             <span th:text="#{menu.login}"></span>
-                        </a>
-                    </li>
-                    <li sec:authorize="isAuthenticated()">
-                        <a th:href="@{/logout}">
-                            <span th:text="#{menu.logout}"></span>
                         </a>
                     </li>
                 </ul>
